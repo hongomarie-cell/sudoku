@@ -1,0 +1,525 @@
+/* リセット＆ベース設定（デフォルトCSSとの干渉防止） */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 添付画像イメージの赤ベース・ロイヤルスチュアート風タータンチェック背景 */
+.tartan-bg {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: #c8102e;
+  background-image:
+    /* 織り目（斜線ツイル）の繊細なテクスチャ */
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 0, 0, 0.16) 0px,
+      rgba(0, 0, 0, 0.16) 2px,
+      transparent 2px,
+      transparent 5px
+    ),
+    /* 縦の白・黄・黒・紺のタータンライン */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 44px,
+      rgba(25, 25, 65, 0.65) 44px,
+      rgba(25, 25, 65, 0.65) 54px,
+      rgba(12, 12, 16, 0.85) 54px,
+      rgba(12, 12, 16, 0.85) 68px,
+      rgba(245, 195, 50, 0.9) 68px,
+      rgba(245, 195, 50, 0.9) 72px,
+      rgba(12, 12, 16, 0.85) 72px,
+      rgba(12, 12, 16, 0.85) 78px,
+      rgba(255, 255, 255, 0.92) 78px,
+      rgba(255, 255, 255, 0.92) 83px,
+      rgba(12, 12, 16, 0.85) 83px,
+      rgba(12, 12, 16, 0.85) 114px,
+      rgba(255, 255, 255, 0.92) 114px,
+      rgba(255, 255, 255, 0.92) 119px,
+      rgba(12, 12, 16, 0.85) 119px,
+      rgba(12, 12, 16, 0.85) 150px,
+      rgba(255, 255, 255, 0.92) 150px,
+      rgba(255, 255, 255, 0.92) 155px,
+      rgba(12, 12, 16, 0.85) 155px,
+      rgba(12, 12, 16, 0.85) 161px,
+      rgba(245, 195, 50, 0.9) 161px,
+      rgba(245, 195, 50, 0.9) 165px,
+      rgba(12, 12, 16, 0.85) 165px,
+      rgba(12, 12, 16, 0.85) 179px,
+      rgba(25, 25, 65, 0.65) 179px,
+      rgba(25, 25, 65, 0.65) 189px,
+      transparent 189px,
+      transparent 234px
+    ),
+    /* 横の白・黄・黒・紺のタータンライン */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 44px,
+      rgba(25, 25, 65, 0.6) 44px,
+      rgba(25, 25, 65, 0.6) 54px,
+      rgba(12, 12, 16, 0.78) 54px,
+      rgba(12, 12, 16, 0.78) 68px,
+      rgba(245, 195, 50, 0.88) 68px,
+      rgba(245, 195, 50, 0.88) 72px,
+      rgba(12, 12, 16, 0.78) 72px,
+      rgba(12, 12, 16, 0.78) 78px,
+      rgba(255, 255, 255, 0.9) 78px,
+      rgba(255, 255, 255, 0.9) 83px,
+      rgba(12, 12, 16, 0.78) 83px,
+      rgba(12, 12, 16, 0.78) 114px,
+      rgba(255, 255, 255, 0.9) 114px,
+      rgba(255, 255, 255, 0.9) 119px,
+      rgba(12, 12, 16, 0.78) 119px,
+      rgba(12, 12, 16, 0.78) 150px,
+      rgba(255, 255, 255, 0.9) 150px,
+      rgba(255, 255, 255, 0.9) 155px,
+      rgba(12, 12, 16, 0.78) 155px,
+      rgba(12, 12, 16, 0.78) 161px,
+      rgba(245, 195, 50, 0.88) 161px,
+      rgba(245, 195, 50, 0.88) 165px,
+      rgba(12, 12, 16, 0.78) 165px,
+      rgba(12, 12, 16, 0.78) 179px,
+      rgba(25, 25, 65, 0.6) 179px,
+      rgba(25, 25, 65, 0.6) 189px,
+      transparent 189px,
+      transparent 234px
+    );
+}
+
+/* メインゲームカード（視認性を保つアイボリー調の半透明グラスカード） */
+.game-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(253, 251, 247, 0.96);
+  border-radius: 20px;
+  padding: 20px 18px 22px;
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.45),
+    0 0 0 2px rgba(255, 255, 255, 0.65);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ヘッダー＆難易度タブ */
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.title-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #8f1123;
+  line-height: 1.15;
+}
+
+.game-subtitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #6b5e58;
+}
+
+.difficulty-tabs {
+  display: flex;
+  background: #efeae2;
+  padding: 3px;
+  border-radius: 10px;
+  gap: 2px;
+}
+
+.diff-btn {
+  border: none;
+  background: transparent;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #5c524d;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.diff-btn.active {
+  background: #b8142a;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(184, 20, 42, 0.35);
+}
+
+/* 数独ボード */
+.board-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.sudoku-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  border: 2.5px solid #2b2123;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.sudoku-cell {
+  position: relative;
+  border: none;
+  border-right: 1px solid #d8d0c8;
+  border-bottom: 1px solid #d8d0c8;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+  transition: background-color 0.1s ease;
+}
+
+.sudoku-cell:nth-child(9n) {
+  border-right: none;
+}
+
+.sudoku-cell:nth-child(n + 73) {
+  border-bottom: none;
+}
+
+.sudoku-cell.border-right-thick {
+  border-right: 2px solid #2b2123;
+}
+
+.sudoku-cell.border-bottom-thick {
+  border-bottom: 2px solid #2b2123;
+}
+
+/* セルの状態カラー */
+.sudoku-cell.related {
+  background-color: #f8eff0;
+}
+
+.sudoku-cell.same-number {
+  background-color: #f3d5d9;
+}
+
+.sudoku-cell.selected {
+  background-color: #e6a8b2 !important;
+}
+
+.sudoku-cell.error {
+  background-color: #ffe3e6;
+}
+
+.cell-value {
+  font-size: clamp(1.15rem, 4.8vw, 1.65rem);
+  line-height: 1;
+}
+
+.sudoku-cell.fixed .cell-value {
+  font-weight: 800;
+  color: #1f1a1c;
+}
+
+.sudoku-cell.user-input .cell-value {
+  font-weight: 700;
+  color: #b8142a;
+}
+
+.sudoku-cell.error .cell-value {
+  color: #d90429;
+  text-decoration: underline wavy #d90429;
+}
+
+/* 仮置きメモ（3x3ミニグリッド） */
+.notes-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 1px;
+}
+
+.note-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.52rem, 2vw, 0.68rem);
+  font-weight: 700;
+  color: #5c5356;
+  line-height: 1;
+}
+
+/* クリア演出 */
+.clear-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(34, 15, 19, 0.78);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.25s ease;
+}
+
+.clear-modal {
+  background: #fffdf9;
+  padding: 24px 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.clear-icon {
+  color: #b8142a;
+}
+
+.clear-modal h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #8f1123;
+  letter-spacing: 0.04em;
+}
+
+.clear-modal p {
+  font-size: 0.9rem;
+  color: #4a4042;
+}
+
+.primary-new-btn {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #b8142a;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* アクションツールバー */
+.action-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.action-btn {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: #3a3032;
+  padding: 4px 2px;
+  border-radius: 10px;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+.action-btn:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.action-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.action-icon-wrap {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f2ece4;
+  border: 1.5px solid #e0d6cb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3a3032;
+  transition: all 0.15s ease;
+}
+
+.action-btn:hover:not(:disabled) .action-icon-wrap {
+  background: #eadfd3;
+}
+
+.action-btn span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 仮置きON/OFFバッジ */
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 999px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.badge-off {
+  background: #7c7275;
+  color: #ffffff;
+}
+
+.badge-on {
+  background: #b8142a;
+  color: #ffffff;
+}
+
+.note-toggle.on .action-icon-wrap {
+  background: #fbe8eb;
+  border-color: #b8142a;
+  color: #b8142a;
+}
+
+.badge-hint {
+  background: #d99b16;
+  color: #ffffff;
+}
+
+.new-game-btn .action-icon-wrap {
+  background: #8f1123;
+  border-color: #8f1123;
+  color: #ffffff;
+}
+
+.new-game-btn:hover .action-icon-wrap {
+  background: #a8152a !important;
+}
+
+/* 数字キーパッド */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 5px;
+}
+
+.num-btn {
+  border: 1.5px solid #dfd5ca;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 8px 0 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #d5c9bc;
+  transition: all 0.1s ease;
+}
+
+.num-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.num-main {
+  font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  font-weight: 800;
+  color: #8f1123;
+  line-height: 1.1;
+}
+
+.num-btn.note-active .num-main {
+  color: #5c5356;
+}
+
+.num-rem {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #8a7f7a;
+  margin-top: 2px;
+}
+
+.num-btn.completed {
+  opacity: 0.45;
+  background: #f5f1ec;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* スマホ向けレスポンシブ微調整 */
+@media (max-width: 420px) {
+  .tartan-bg {
+    padding: 8px;
+  }
+
+  .game-card {
+    padding: 14px 12px 16px;
+    border-radius: 16px;
+    gap: 10px;
+  }
+
+  .game-title {
+    font-size: 1.08rem;
+  }
+
+  .action-icon-wrap {
+    width: 38px;
+    height: 38px;
+  }
+
+  .numpad {
+    gap: 3px;
+  }
+
+  .num-btn {
+    padding: 6px 0 5px;
+    border-radius: 8px;
+  }
+}
