@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './App.css';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
