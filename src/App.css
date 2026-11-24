@@ -124,21 +124,27 @@ body,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 6px;
+  flex-wrap: nowrap;
 }
+
+
+折り返し（
 
 .title-area {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
 
 .game-title {
-  font-size: 1.25rem;
+  font-size: clamp(0.95rem, 3.8vw, 1.2rem);
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: #8f1123;
   line-height: 1.15;
+  white-space: nowrap;
 }
 
 .game-subtitle {
@@ -153,18 +159,20 @@ body,
   padding: 3px;
   border-radius: 10px;
   gap: 2px;
+  flex-shrink: 0;
 }
 
 .diff-btn {
   border: none;
   background: transparent;
-  padding: 5px 10px;
-  font-size: 0.78rem;
+  padding: 5px 8px;
+  font-size: 0.72rem;
   font-weight: 700;
   color: #5c524d;
   border-radius: 7px;
   cursor: pointer;
   transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
 .diff-btn.active {
